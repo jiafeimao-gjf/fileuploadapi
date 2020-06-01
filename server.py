@@ -65,6 +65,10 @@ def del_file(path_data):
         else:
             del_file(file_data)
 
+@app.route("/hello")
+def hello():
+    return "Hello, World!"
+
 @app.route('/upload/img', methods=['GET', 'POST'])
 def upload_img_file():
     if request.method == 'POST':
@@ -181,3 +185,10 @@ def upload_obj_file():
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'],
                                filename)
+
+if __name__ == "__main__":
+    app.run(
+        host = '0.0.0.0',
+        port = 5000,
+        debug = false
+    )
